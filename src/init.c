@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/04/30 17:36:44 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/01 15:37:29 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_mandel	*init_mandel(void)
 	brot->zr = 0;
 	brot->zi = 0;
 	brot->tmp = 0;
-	brot->zoom = 500;
 	return (brot);
 }
 
@@ -58,6 +57,7 @@ t_env		*init_env(void)
 	e->mandel = init_mandel();
 	e->x = 0;
 	e->y = 0;
+	e->zoom = 150;
 	e->it_max = 20;
 	return (e);
 }
