@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/01 16:16:51 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 17:50:10 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,47 @@
 
 int		deal_mouse(int k, int x, int y, t_env *e)
 {
-	e->x += 0;
-	if (k == 5) // MOLETTE BAS
+	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
 	{
-		e->x += x / 10;
-		e->y += y / 10;
-		e->x *= 1.2;
-		e->y *= 1.2;
-		e->zoom *= 1.2;
-		e->it_max *= 1.05;
-	}
+		printf("x %d / y %d\n", x, y);
+		if (k == 1) // CLICK
+		{
+			e->mndl->x_len *= 0.95;
+			e->mndl->y_len *= 0.95;
 
-	if (k == 4) // MOLETTE HAUT
-	{
-		e->x -= x / 10;
-		e->y -= y / 10;
-		e->x /= 1.2;
-		e->y /= 1.2;
-		e->zoom /= 1.2;
-		e->it_max *= 1.05;
+		}
 	}
 
 	printf("click %d\n", k);
-	if (x >= 0 && y >= 0 && x <= WIN_WIDTH && y <= WIN_HEIGHT)
-		printf("x %d / y %d\n", x, y);
-	mandel_plot(e);
+
+	create_image(e);
 	return (0);
 }
 
 int		deal_key(int key, t_env *e)
 {
+	printf("key %d\n", key);
 	if (key == 123) // GAUCHE
 	{
-		e->x -= 100;
+		e->mndl->x_cen -= (e->mndl->x_len * 15) / WINW;
 	}
 	if (key == 124) // RIGHT
 	{
-		e->x += 100;
+		e->mndl->x_cen += (e->mndl->x_len * 15) / WINW;
 	}
 	if (key == 126) // HAUT
 	{
-		e->y -= 100;
+		e->mndl->y_cen -= (e->mndl->y_len * 15) / WINH;
 	}
 	if (key == 125) // BAS
 	{
-		e->y += 100;
+		e->mndl->y_cen += (e->mndl->y_len * 15) / WINH;
 	}
-
+	if (key == 49) // ESPACE
+	{
+			e->mndl->x_len *= 0.90;
+			e->mndl->y_len *= 0.90;
+	}
 
 	if (key == 78) // -
 	{
@@ -69,7 +63,7 @@ int		deal_key(int key, t_env *e)
 		//e->y += e->y / 5;
 		//e->x *= 1.2;
 		//e->y *= 1.2;
-		e->it_max -= 20;
+		e->it_max -= 5;
 	}
 	if (key == 69) // +
 	{
@@ -77,13 +71,13 @@ int		deal_key(int key, t_env *e)
 		//e->y -= e->y / 5;
 		//e->x /= 1.2;
 		//e->y /= 1.2;
-		e->it_max += 20;
+		e->it_max += 5;
 	}
 	if (key == 53)
 	{
 		mlx_destroy_window(e->mlx, e->win);
 		exit(1);
 	}
-	mandel_plot(e);
+	create_image(e);
 	return (0);
 }

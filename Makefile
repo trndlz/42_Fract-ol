@@ -6,7 +6,7 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/01 16:28:26 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/02 18:31:54 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_PATH	:= ./src
 SRC_NAME	:=	main.c		\
 				keyboard.c	\
 				color.c		\
+				fractales.c	\
 				init.c
 
 OBJ_PATH	:= ./src

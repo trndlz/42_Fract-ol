@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/01 15:37:29 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 17:55:28 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 t_mandel	*init_mandel(void)
 {
-	t_mandel *brot;
+	t_mandel *b;
 
-	if (!(brot= (t_mandel*)malloc(sizeof(t_mandel))))
+	if (!(b= (t_mandel*)malloc(sizeof(t_mandel))))
 		return (NULL);
-	brot->x1 = -2.1;
-	brot->x2 = 0.6;
-	brot->y1 = -1.2;
-	brot->y2 = 1.2;
-	brot->cr = 0;
-	brot->ci = 0;
-	brot->zr = 0;
-	brot->zi = 0;
-	brot->tmp = 0;
-	return (brot);
+	b->x_len = 3.5;
+	b->y_len = 2;
+	b->x_cen = -0.75;
+	b->x_cen = 0;
+	return (b);
 }
 
 t_color		*init_color(void)
@@ -52,11 +47,9 @@ t_env		*init_env(void)
 	if (!(e = (t_env*)malloc(sizeof(t_env))))
 		return (NULL);
 	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, WIN_WIDTH, WIN_HEIGHT, "FRACT'OL");
+	e->win = mlx_new_window(e->mlx, WINW, WINH, "FRACT'OL");
 	e->color = init_color();
-	e->mandel = init_mandel();
-	e->x = 0;
-	e->y = 0;
+	e->mndl = init_mandel();
 	e->zoom = 150;
 	e->it_max = 20;
 	return (e);
