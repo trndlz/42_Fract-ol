@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 17:34:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 18:10:26 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 18:37:18 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 int						deal_key(int key, t_env *e);
 unsigned long			get_color(t_env *e, int i);
 int						deal_mouse(int k, int x, int y, t_env *e);
+void					display_infos(t_env *e);
 
 #endif

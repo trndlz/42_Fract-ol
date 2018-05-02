@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 17:36:54 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 18:20:34 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 18:42:07 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,11 @@ void	fract_plot(t_env *e)
 
 void	create_image(t_env *e)
 {
+	mlx_clear_window(e->mlx, e->win);
 	e->image = mlx_new_image(e->mlx, WINW, WINH);
 	e->imgstr = (int *)mlx_get_data_addr(e->image, &e->bpp, &e->s_l, &e->endian);
 	fract_plot(e);
+	display_infos(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->image, 0, 0);
 	mlx_destroy_image(e->mlx, e->image);
 }

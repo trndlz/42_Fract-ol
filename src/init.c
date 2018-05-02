@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 11:44:47 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 17:55:28 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/02 18:47:05 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ t_env		*init_env(void)
 	if (!(e = (t_env*)malloc(sizeof(t_env))))
 		return (NULL);
 	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, WINW, WINH, "FRACT'OL");
+	e->win = mlx_new_window(e->mlx, WINW + 200, WINH, "FRACT'OL");
 	e->color = init_color();
 	e->mndl = init_mandel();
-	e->zoom = 150;
+	e->zoom = 1;
 	e->it_max = 20;
 	return (e);
 }
