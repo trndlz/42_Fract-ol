@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 15:51:23 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/03 17:35:51 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 		{
 			e->mndl->j_cx = (3.5 * x / WINW) - 2.5;
 			e->mndl->j_cy = (2 * x / WINH) - 1;
+		}
+		if (k == 5)
+		{
+			e->mndl->x_len *= 0.90;
+			e->mndl->y_len *= 0.90;
+		}
+		if (k == 4)
+		{
+			e->mndl->x_len *= 1.1;
+			e->mndl->y_len *= 1.1;
 		}
 	}
 	printf("click %d\n", k);
@@ -83,17 +93,26 @@ void	key_fractals(int key, t_env *e)
 	if (key == 69)
 		e->it_max += 4;
 	if (key == 83)
+	{
 		e->fract = 0;
+		e->mndl = init_mandel(e);
+	}
 	if (key == 84)
+	{
 		e->fract = 1;
+		e->mndl = init_mandel(e);
+	}
 	if (key == 85)
+	{
 		e->fract = 2;
+		e->mndl = init_mandel(e);
+	}
 	if (key == 45 && e->mndl->n > 2)
 		e->mndl->n -= 1;
 	if (key == 46)
 		e->mndl->n += 1;
 	if (key == 36)
-		e->mndl = init_mandel();
+		e->mndl = init_mandel(e);
 }
 
 int		deal_key(int key, t_env *e)
