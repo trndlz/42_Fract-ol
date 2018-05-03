@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 17:34:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 15:52:36 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/03 17:15:36 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 # include "libft.h"
 # define WINW 800
 # define WINH 500
-
-typedef struct			s_color
-{
-	int					col[6];
-}						t_color;
 
 typedef struct			s_color2
 {
@@ -46,7 +41,6 @@ typedef struct			s_env
 	int					b;
 	int					c;
 	struct s_mandel		*mndl;
-	struct s_color		*color;
 	struct s_color2		*color2;
 }						t_env;
 
@@ -61,15 +55,13 @@ typedef struct			s_mandel
 	int					n;
 }						t_mandel;
 
-
-
 /*
 ** STRUCTURES INITIALIZATION
 */
 
-t_mandel				*init_mandel(void);
-t_env					*init_env(void);
-void					init_fract(t_env *e, char **av);
+t_mandel				*init_mandel(t_env *e);
+t_env					*init_env(char **av);
+int						init_fract(char **av);
 void					ft_usage(void);
 
 
@@ -122,7 +114,7 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 int						deal_key(int key, t_env *e);
 void					key_fractals(int key, t_env *e);
 void					key_colors(int key, t_env *e);
-void						key_move_zoom(int key, t_env *e);
+void					key_move_zoom(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_mouse(int k, int x, int y, t_env *e);
