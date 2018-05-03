@@ -6,18 +6,20 @@
 #    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/03 12:30:29 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/03 15:53:14 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= fractol
 
 SRC_PATH	:= ./src
-SRC_NAME	:=	main.c		\
-				keyboard.c	\
-				color.c		\
-				fractales.c	\
-				display.c	\
+SRC_NAME	:=	main.c			\
+				keyboard.c		\
+				color.c			\
+				fractales.c		\
+				display.c		\
+				init_colors.c	\
+				images.c		\
 				init.c
 
 OBJ_PATH	:= ./src
