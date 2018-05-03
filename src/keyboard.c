@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/02 18:44:23 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/03 12:00:27 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 		printf("x %d / y %d\n", x, y);
 		if (k == 1) // CLICK
 		{
-			e->mndl->x_len *= 0.95;
-			e->mndl->y_len *= 0.95;
-
+			e->j_cx = (3.5 * x / WINW) - 2.5;
+			e->j_cy = (2 * x / WINH) - 1;
 		}
 	}
 
@@ -57,21 +56,33 @@ int		deal_key(int key, t_env *e)
 			e->mndl->y_len *= 0.90;
 			e->zoom *= 1.1;
 	}
-
+	if (key == 51) // DELETE
+	{
+			e->mndl->x_len *= 1.1;
+			e->mndl->y_len *= 1.1;
+			e->zoom *= 0.9;
+	}
+	if (key == 89) // 7
+	{
+		free(e->color2);
+		e->color2 = init_color2();
+	}
+	if (key == 91) // 8
+	{
+		free(e->color2);
+		e->color2 = init_color3();
+	}
+	if (key == 92) // 9
+	{
+		free(e->color2);
+		e->color2 = init_color4();
+	}
 	if (key == 78) // -
 	{
-		//e->x += e->x / 5;
-		//e->y += e->y / 5;
-		//e->x *= 1.2;
-		//e->y *= 1.2;
 		e->it_max -= 5;
 	}
 	if (key == 69) // +
 	{
-		//e->x -= e->x / 5;
-		//e->y -= e->y / 5;
-		//e->x /= 1.2;
-		//e->y /= 1.2;
 		e->it_max += 5;
 	}
 	if (key == 53)
