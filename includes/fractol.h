@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/27 17:34:31 by tmervin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/06 21:33:37 by tmervin          ###   ########.fr       */
-=======
-/*   Updated: 2018/05/03 17:15:36 by tmervin          ###   ########.fr       */
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
+/*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
+/*   Updated: 2018/05/06 22:10:13 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +21,7 @@
 # include "libft.h"
 # define WINW 800
 # define WINH 500
-<<<<<<< HEAD
 # define COLBARNSLEY 0x39FF12
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 
 typedef struct			s_color2
 {
@@ -50,10 +43,7 @@ typedef struct			s_env
 	int					b;
 	int					c;
 	struct s_mandel		*mndl;
-<<<<<<< HEAD
 	struct s_brnsl		*brnsl;
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 	struct s_color2		*color2;
 }						t_env;
 
@@ -69,7 +59,6 @@ typedef struct			s_mandel
 	int					n;
 }						t_mandel;
 
-<<<<<<< HEAD
 typedef struct			s_brnsl
 {
 	double				x_off;
@@ -85,17 +74,12 @@ typedef struct			s_brnsl
 	unsigned long		it;
 }						t_brnsl;
 
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 /*
 ** STRUCTURES INITIALIZATION
 */
 
 t_mandel				*init_mandel(t_env *e);
-<<<<<<< HEAD
 t_brnsl					*init_brnsl(void);
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 t_env					*init_env(char **av);
 int						init_fract(char **av);
 void					ft_usage(void);
@@ -150,13 +134,10 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 int						deal_key(int key, t_env *e);
 void					key_fractals(int key, t_env *e);
 void					key_colors(int key, t_env *e);
-<<<<<<< HEAD
 void					key_iter(int key, t_env *e);
 void					key_move(int key, t_env *e);
 void					key_zoom(int key, t_env *e);
-=======
 void					key_move_zoom(int key, t_env *e);
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 int						deal_key(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_mouse(int k, int x, int y, t_env *e);

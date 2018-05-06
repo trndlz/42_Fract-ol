@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/03 15:53:59 by tmervin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/06 20:35:49 by tmervin          ###   ########.fr       */
-=======
-/*   Updated: 2018/05/03 17:24:20 by tmervin          ###   ########.fr       */
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
+/*   Created: 2018/05/06 22:07:55 by tmervin           #+#    #+#             */
+/*   Updated: 2018/05/06 22:08:08 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +66,8 @@ int			init_fract(char **av)
 		return (1);
 	else if (ft_strcmp(av[1], "N-Julia") == 0)
 		return (2);
-<<<<<<< HEAD
 	else if (ft_strcmp(av[1], "Barnsley") == 0)
 		return (3);
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 	else
 		return (-1);
 }
@@ -90,10 +83,7 @@ t_env		*init_env(char **av)
 	e->color2 = init_color2();
 	e->fract = init_fract(av);
 	e->mndl = init_mandel(e);
-<<<<<<< HEAD
 	e->brnsl = init_brnsl();
-=======
->>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 	e->zoom = 1;
 	return (e);
 }
