@@ -6,7 +6,7 @@
 #    By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/06 22:07:32 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/06 22:07:34 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/06 22:55:52 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_NAME	:=	main.c			\
 				display.c		\
 				init_colors.c	\
 				images.c		\
+				usage.c			\
 				init.c
 
 OBJ_PATH	:= ./src

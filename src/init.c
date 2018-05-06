@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:07:55 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:08:08 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 22:39:18 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,6 @@ t_brnsl		*init_brnsl(void)
 	return (b);
 }
 
-void		ft_usage(void)
-{
-	ft_putstr("fractol <Mandelbrot/Julia/N-Julia/Barnsley>\n");
-	exit(1);
-}
-
 int			init_fract(char **av)
 {
 	if (ft_strcmp(av[1], "Mandelbrot") == 0)
@@ -80,10 +74,12 @@ t_env		*init_env(char **av)
 		return (NULL);
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, WINW + 200, WINH, "FRACT'OL");
-	e->color2 = init_color2();
+	if (!(e->color2 = init_color2()))
+		return (NULL);
 	e->fract = init_fract(av);
-	e->mndl = init_mandel(e);
-	e->brnsl = init_brnsl();
-	e->zoom = 1;
+	if (!(e->mndl = init_mandel(e)))
+		return (NULL);
+	if (!(e->brnsl = init_brnsl()))
+		return (NULL);
 	return (e);
 }

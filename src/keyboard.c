@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:12:28 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 22:47:57 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 {
 	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
 	{
-		printf("x %d / y %d\n", x, y);
 		if (k == 1)
 		{
 			e->mndl = init_mandel(e);
@@ -27,14 +26,17 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 		{
 			e->mndl->x_len *= 0.90;
 			e->mndl->y_len *= 0.90;
+			e->brnsl->x_zoom *= 1.1;
+			e->brnsl->y_zoom *= 1.1;
 		}
 		if (k == 4)
 		{
 			e->mndl->x_len *= 1.1;
 			e->mndl->y_len *= 1.1;
+			e->brnsl->x_zoom *= 0.9;
+			e->brnsl->y_zoom *= 0.9;
 		}
 	}
-	printf("click %d\n", k);
 	create_image(e);
 	return (0);
 }
@@ -83,7 +85,6 @@ void	key_zoom(int key, t_env *e)
 
 int		deal_key(int key, t_env *e)
 {
-	printf("key %d\n", key);
 	key_fractals(key, e);
 	key_colors(key, e);
 	key_iter(key, e);

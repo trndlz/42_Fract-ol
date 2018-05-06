@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:10:13 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 22:28:10 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_mandel				*init_mandel(t_env *e);
 t_brnsl					*init_brnsl(void);
 t_env					*init_env(char **av);
 int						init_fract(char **av);
-void					ft_usage(void);
+
 
 /*
 ** COLORS INITIALIZATION
@@ -141,5 +141,12 @@ void					key_move_zoom(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_mouse(int k, int x, int y, t_env *e);
+
+/*
+** ERRORS
+*/
+
+void					ft_usage(void);
+void					ft_malloc_error(void);
 
 #endif
