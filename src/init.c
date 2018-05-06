@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 15:53:59 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 17:24:20 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 20:35:49 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,27 @@ t_mandel	*init_mandel(t_env *e)
 	b->j_cx = -0.7269;
 	b->j_cy = 0.1889;
 	b->n = 2;
+	b->it = 24;
+	return (b);
+}
+
+t_brnsl		*init_brnsl(void)
+{
+	t_brnsl *b;
+
+	if (!(b = (t_brnsl*)malloc(sizeof(t_brnsl))))
+		return (NULL);
+	b->x_off = 0;
+	b->y_off = 0;
+	b->x_zoom = 30;
+	b->y_zoom = 30;
+	b->it = 100000;
 	return (b);
 }
 
 void		ft_usage(void)
 {
-	ft_putstr("fractol <Mandelbrot/Julia/N-Julia>\n");
+	ft_putstr("fractol <Mandelbrot/Julia/N-Julia/Barnsley>\n");
 	exit(1);
 }
 
@@ -51,6 +66,8 @@ int			init_fract(char **av)
 		return (1);
 	else if (ft_strcmp(av[1], "N-Julia") == 0)
 		return (2);
+	else if (ft_strcmp(av[1], "Barnsley") == 0)
+		return (3);
 	else
 		return (-1);
 }
@@ -66,7 +83,7 @@ t_env		*init_env(char **av)
 	e->color2 = init_color2();
 	e->fract = init_fract(av);
 	e->mndl = init_mandel(e);
+	e->brnsl = init_brnsl();
 	e->zoom = 1;
-	e->it_max = 24;
 	return (e);
 }

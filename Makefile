@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmervin <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/18 12:30:26 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/03 17:38:54 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/06 21:36:13 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		:= fractol
 SRC_PATH	:= ./src
 SRC_NAME	:=	main.c			\
 				keyboard.c		\
+				keyboard2.c		\
 				color.c			\
 				fractales.c		\
 				display.c		\
@@ -25,7 +26,7 @@ SRC_NAME	:=	main.c			\
 OBJ_PATH	:= ./src
 CPPFLAGS	:= -Iincludes -I./libft/includes
 
-LDFLAGS		:= -Llibft/ 
+LDFLAGS		:= -Llibft/
 LDLIBS		:= -lft
 MINILIBX	:= -L ./minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
 

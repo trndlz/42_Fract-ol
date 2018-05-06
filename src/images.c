@@ -6,7 +6,7 @@
 /*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 15:53:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 15:53:50 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 20:33:47 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void			fract_plot(t_env *e)
 	int					a;
 	int					b;
 
+	if (e->fract == 3)
+	{
+		barnsley(e, e->brnsl->it);
+		return ;
+	}
+	i = 0;
 	a = -1;
 	while (++a < WINW)
 	{

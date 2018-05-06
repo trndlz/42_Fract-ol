@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 17:34:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 17:15:36 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 21:33:37 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
+# include <stdlib.h>
 # include "mlx.h"
 # include "libft.h"
 # define WINW 800
 # define WINH 500
+# define COLBARNSLEY 0x39FF12
 
 typedef struct			s_color2
 {
@@ -34,13 +37,13 @@ typedef struct			s_env
 	int					bpp;
 	int					s_l;
 	int					endian;
-	int					it_max;
 	int					zoom;
 	int					fract;
 	int					a;
 	int					b;
 	int					c;
 	struct s_mandel		*mndl;
+	struct s_brnsl		*brnsl;
 	struct s_color2		*color2;
 }						t_env;
 
@@ -52,18 +55,34 @@ typedef struct			s_mandel
 	double				y_cen;
 	double				j_cx;
 	double				j_cy;
+	int					it;
 	int					n;
 }						t_mandel;
+
+typedef struct			s_brnsl
+{
+	double				x_off;
+	double				y_off;
+	double				x_zoom;
+	double				y_zoom;
+	double				x0;
+	double				y0;
+	double				x1;
+	double				y1;
+	double				a;
+	double				b;
+	unsigned long		it;
+}						t_brnsl;
 
 /*
 ** STRUCTURES INITIALIZATION
 */
 
 t_mandel				*init_mandel(t_env *e);
+t_brnsl					*init_brnsl(void);
 t_env					*init_env(char **av);
 int						init_fract(char **av);
 void					ft_usage(void);
-
 
 /*
 ** COLORS INITIALIZATION
@@ -97,7 +116,8 @@ void					display_infos2(t_env *e);
 unsigned int			mandelbrot(t_env *e, double x0, double y0);
 unsigned int			julia(t_env *e, double x0, double y0);
 unsigned int			n_julia(t_env *e, double x0, double y0);
-
+void					barnsley(t_env *e, unsigned long iter);
+void					barnsley_algo(t_env *e, int rd);
 
 /*
 ** IMAGES / DRAWING
@@ -114,7 +134,9 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 int						deal_key(int key, t_env *e);
 void					key_fractals(int key, t_env *e);
 void					key_colors(int key, t_env *e);
-void					key_move_zoom(int key, t_env *e);
+void					key_iter(int key, t_env *e);
+void					key_move(int key, t_env *e);
+void					key_zoom(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_mouse(int k, int x, int y, t_env *e);

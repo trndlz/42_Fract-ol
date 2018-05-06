@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmervin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:24:56 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/03 15:39:20 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 21:34:17 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	disp_color(t_env *e, int x, int y)
 	a = -1;
 	while (++a < 6)
 	{
-		mlx_string_put(e->mlx, e->win, x, y, rgb_to_hexa(e, a), c);
+		if (e->fract != 3)
+			mlx_string_put(e->mlx, e->win, x, y, rgb_to_hexa(e, a), c);
+		else
+			mlx_string_put(e->mlx, e->win, x, y, COLBARNSLEY, c);
 		c = c + 2;
 		x = x + 33;
 	}
@@ -31,7 +34,10 @@ void	display_infos2(t_env *e)
 {
 	char *it;
 
-	it = ft_itoa(e->it_max);
+	if (e->fract == 3)
+		it = ft_itoa(e->brnsl->it);
+	else
+		it = ft_itoa(e->mndl->it);
 	mlx_string_put(e->mlx, e->win, WINW + 10, 5, 0xC8C8C8, "> CURRENT");
 	if (e->fract == 0)
 		mlx_string_put(e->mlx, e->win, WINW + 10, 25, 0xFFFFFF, "MANDELBROT");
@@ -39,11 +45,14 @@ void	display_infos2(t_env *e)
 		mlx_string_put(e->mlx, e->win, WINW + 10, 25, 0xFFFFFF, "JULIA");
 	if (e->fract == 2)
 		mlx_string_put(e->mlx, e->win, WINW + 10, 25, 0xFFFFFF, "N-JULIA");
+	if (e->fract == 3)
+		mlx_string_put(e->mlx, e->win, WINW + 10, 25, 0xFFFFFF,
+				"BARNSLEY FERN");
 	mlx_string_put(e->mlx, e->win, WINW + 10, 65, 0xC8C8C8,
 			"> MAX ITER. (+ -)");
 	mlx_string_put(e->mlx, e->win, WINW + 10, 85, 0xFFFFFF, it);
 	mlx_string_put(e->mlx, e->win, WINW + 10, 125, 0xC8C8C8,
-			"> COLOR (6 to 9)");
+		"> COLOR (6 to 9)");
 	disp_color(e, WINW + 10, 145);
 	free(it);
 }
@@ -60,13 +69,14 @@ void	display_infos(t_env *e)
 	mlx_string_put(e->mlx, e->win, WINW + 10, 245, 0xFFFFFF, "1 Mandelbrot");
 	mlx_string_put(e->mlx, e->win, WINW + 10, 265, 0xFFFFFF, "2 Julia ");
 	mlx_string_put(e->mlx, e->win, WINW + 10, 285, 0xFFFFFF, "3 N-Julia");
-	mlx_string_put(e->mlx, e->win, WINW + 10, 325, 0xC8C8C8, "> RESET : Enter");
-	mlx_string_put(e->mlx, e->win, WINW + 10, 345, 0xC8C8C8, "> MOVE < ^ > v");
-	mlx_string_put(e->mlx, e->win, WINW + 10, 365, 0xC8C8C8, "> EXIT : Esc");
+	mlx_string_put(e->mlx, e->win, WINW + 10, 305, 0xFFFFFF, "4 Barnsley Fern");
+	mlx_string_put(e->mlx, e->win, WINW + 10, 345, 0xC8C8C8, "> RESET : Enter");
+	mlx_string_put(e->mlx, e->win, WINW + 10, 365, 0xC8C8C8, "> MOVE < ^ > v");
+	mlx_string_put(e->mlx, e->win, WINW + 10, 385, 0xC8C8C8, "> EXIT : Esc");
 	if (e->fract == 2)
 	{
-		mlx_string_put(e->mlx, e->win, WINW + 10, 405, 0xC8C8C8, "> N (-n +m)");
-		mlx_string_put(e->mlx, e->win, WINW + 10, 425, 0xFFFFFF, n);
+		mlx_string_put(e->mlx, e->win, WINW + 10, 425, 0xC8C8C8, "> N (-n +m)");
+		mlx_string_put(e->mlx, e->win, WINW + 10, 445, 0xFFFFFF, n);
 	}
 	free(n);
 	display_infos2(e);
