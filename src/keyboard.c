@@ -6,7 +6,11 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:24:59 by tmervin           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/05/06 21:15:16 by tmervin          ###   ########.fr       */
+=======
+/*   Updated: 2018/05/03 17:35:51 by tmervin          ###   ########.fr       */
+>>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +85,62 @@ void	key_zoom(int key, t_env *e)
 	}
 }
 
+<<<<<<< HEAD
+=======
+void	key_colors(int key, t_env *e)
+{
+	if (key == 88)
+	{
+		free(e->color2);
+		e->color2 = init_color();
+	}
+	if (key == 89)
+	{
+		free(e->color2);
+		e->color2 = init_color2();
+	}
+	if (key == 91)
+	{
+		free(e->color2);
+		e->color2 = init_color3();
+	}
+	if (key == 92)
+	{
+		free(e->color2);
+		e->color2 = init_color4();
+	}
+}
+
+void	key_fractals(int key, t_env *e)
+{
+	if (key == 78 && e->it_max > 4)
+		e->it_max -= 4;
+	if (key == 69)
+		e->it_max += 4;
+	if (key == 83)
+	{
+		e->fract = 0;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 84)
+	{
+		e->fract = 1;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 85)
+	{
+		e->fract = 2;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 45 && e->mndl->n > 2)
+		e->mndl->n -= 1;
+	if (key == 46)
+		e->mndl->n += 1;
+	if (key == 36)
+		e->mndl = init_mandel(e);
+}
+
+>>>>>>> fb0516f9e3d6763e01fb9ec68cc92412d203293d
 int		deal_key(int key, t_env *e)
 {
 	printf("key %d\n", key);
