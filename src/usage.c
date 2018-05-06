@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:18:44 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:28:52 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 23:22:45 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_usage(void)
 {
-	ft_putstr("fractol <Mandelbrot/Julia/N-Julia/Barnsley>\n");
+	ft_putstr("fractol <Mandelbrot/Julia/N-Julia/Barnsley/Tricorn>\n");
 	exit(1);
 }
 

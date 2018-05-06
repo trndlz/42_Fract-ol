@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 17:36:54 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 21:18:58 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 23:33:38 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ unsigned int	julia(t_env *e, double x, double y)
 	{
 		xtemp = x * x - y * y + e->mndl->j_cx;
 		y = 2 * x * y + e->mndl->j_cy;
+		x = xtemp;
+		i++;
+	}
+	return (i);
+}
+
+unsigned int	tricorn(t_env *e, double x, double y)
+{
+	unsigned char	i;
+	double			xtemp;
+
+	i = 0;
+	x = x * e->mndl->x_len / WINW + e->mndl->x_cen - e->mndl->x_len / 2;
+	y = y * e->mndl->y_len / WINH + e->mndl->y_cen - e->mndl->y_len / 2;
+	while (x * x + y * y < 4.0 && i < e->mndl->it)
+	{
+		xtemp = x * x - y * y + x;
+		y = -2 * x * y + y;
 		x = xtemp;
 		i++;
 	}

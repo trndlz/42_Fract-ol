@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:07:55 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:39:18 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 23:35:33 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_mandel	*init_mandel(t_env *e)
 		b->y_len = 2.4;
 		b->x_cen = -0.75;
 	}
-	if (e->fract == 1 || e->fract == 2)
+	else
 	{
 		b->x_len = 3.5;
 		b->y_len = 2;
@@ -62,6 +62,8 @@ int			init_fract(char **av)
 		return (2);
 	else if (ft_strcmp(av[1], "Barnsley") == 0)
 		return (3);
+	else if (ft_strcmp(av[1], "Tricorn") == 0)
+		return (4);
 	else
 		return (-1);
 }

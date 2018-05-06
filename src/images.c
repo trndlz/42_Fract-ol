@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 15:53:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:17:30 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 23:26:34 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			fract_plot(t_env *e)
 				i = julia(e, (double)a, (double)b);
 			if (e->fract == 2)
 				i = n_julia(e, (double)a, (double)b);
+			if (e->fract == 4)
+				i = tricorn(e, (double)a, (double)b);
 			draw_point(e, a, b, i_color(e, i));
 		}
 	}

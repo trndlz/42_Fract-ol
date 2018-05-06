@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:28:10 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/06 23:36:26 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct			s_env
 	int					bpp;
 	int					s_l;
 	int					endian;
-	int					zoom;
 	int					fract;
 	int					a;
 	int					b;
@@ -116,6 +115,7 @@ void					display_infos2(t_env *e);
 unsigned int			mandelbrot(t_env *e, double x0, double y0);
 unsigned int			julia(t_env *e, double x0, double y0);
 unsigned int			n_julia(t_env *e, double x0, double y0);
+unsigned int			tricorn(t_env *e, double x0, double y0);
 void					barnsley(t_env *e, unsigned long iter);
 void					barnsley_algo(t_env *e, int rd);
 
