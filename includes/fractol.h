@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:05:27 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 13:12:05 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # define WINH 500
 # define COLBARNSLEY 0x39FF12
 
-typedef struct			s_color2
+typedef struct			s_color
 {
 	int					col[6][3];
-}						t_color2;
+}						t_color;
 
 typedef struct			s_env
 {
@@ -43,7 +43,7 @@ typedef struct			s_env
 	int					c;
 	struct s_mandel		*mndl;
 	struct s_brnsl		*brnsl;
-	struct s_color2		*color2;
+	struct s_color		*color;
 }						t_env;
 
 typedef struct			s_mandel
@@ -86,10 +86,10 @@ int						init_fract(char **av);
 ** COLORS INITIALIZATION
 */
 
-t_color2				*init_color(void);
-t_color2				*init_color2(void);
-t_color2				*init_color3(void);
-t_color2				*init_color4(void);
+t_color					*init_color(void);
+t_color					*init_color2(void);
+t_color					*init_color3(void);
+t_color					*init_color4(void);
 
 /*
 ** COLORS
@@ -149,6 +149,8 @@ int						deal_mouse(int k, int x, int y, t_env *e);
 */
 
 void					ft_usage(void);
-void					ft_malloc_error(void);
+void					ft_malloc_error(t_env *e);
+void					ft_malloc_error_env(void);
+void					free_structures(t_env *e);
 
 #endif

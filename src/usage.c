@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:18:44 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:02:17 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 13:11:58 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,26 @@ void		ft_usage(void)
 	exit(1);
 }
 
-void		ft_malloc_error(void)
+void		ft_malloc_error(t_env *e)
+{
+	ft_putstr_fd("Problem while malloc\n", 2);
+	free_structures(e);
+	exit(1);
+}
+
+void		ft_malloc_error_env(void)
 {
 	ft_putstr_fd("Problem while malloc\n", 2);
 	exit(1);
+}
+
+void		free_structures(t_env *e)
+{
+	if (e->mndl)
+		free(e->mndl);
+	if (e->brnsl)
+		free(e->brnsl);
+	if (e->color)
+		free(e->color);
+	free(e);
 }

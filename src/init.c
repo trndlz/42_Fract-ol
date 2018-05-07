@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:07:55 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:03:45 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 13:17:14 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ t_brnsl		*init_brnsl(void)
 
 int			init_fract(char **av)
 {
-	if (ft_strcmp(av[1], "Mandelbrot") == 0 || ft_atoi(av[1]) == 0)
+	if (ft_strcmp(av[1], "Mandelbrot") == 0 || ft_strcmp(av[1], "0") == 0)
 		return (0);
-	else if (ft_strcmp(av[1], "Julia") == 0 || ft_atoi(av[1]) == 1)
+	else if (ft_strcmp(av[1], "Julia") == 0 || ft_strcmp(av[1], "1") == 0)
 		return (1);
-	else if (ft_strcmp(av[1], "N-Julia") == 0 || ft_atoi(av[1]) == 2)
+	else if (ft_strcmp(av[1], "N-Julia") == 0 || ft_strcmp(av[1], "2") == 0)
 		return (2);
-	else if (ft_strcmp(av[1], "Barnsley") == 0 || ft_atoi(av[1]) == 3)
+	else if (ft_strcmp(av[1], "Barnsley") == 0 || ft_strcmp(av[1], "3") == 0)
 		return (3);
-	else if (ft_strcmp(av[1], "Burning-Ship") == 0 || ft_atoi(av[1]) == 4)
+	else if (ft_strcmp(av[1], "Burning") == 0 || ft_strcmp(av[1], "4") == 0)
 		return (4);
-	else if (ft_strcmp(av[1], "Tricorn") == 0 || ft_atoi(av[1]) == 5)
+	else if (ft_strcmp(av[1], "Tricorn") == 0 || ft_strcmp(av[1], "5") == 0)
 		return (5);
 	else
 		return (-1);
@@ -85,12 +85,17 @@ t_env		*init_env(char **av)
 	e->fract_name[3] = "BARNSLEY";
 	e->fract_name[4] = "BURNING-SHIP";
 	e->fract_name[5] = "TRICORN";
-	if (!(e->color2 = init_color2()))
-		return (NULL);
+	if (!(e->color = init_color2()))
+		ft_malloc_error(e);
 	e->fract = init_fract(av);
+	if (e->fract == -1)
+	{
+		free_structures(e);
+		ft_usage();
+	}
 	if (!(e->mndl = init_mandel(e)))
-		return (NULL);
+		ft_malloc_error(e);
 	if (!(e->brnsl = init_brnsl()))
-		return (NULL);
+		ft_malloc_error(e);
 	return (e);
 }
