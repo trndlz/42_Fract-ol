@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 15:53:49 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 23:26:34 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 11:54:23 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@ void			draw_point(t_env *e, int x, int y, unsigned int color)
 	i = (x + ((y * e->s_l) / 4));
 	if (i >= 0 && i < (WINW * WINH))
 		e->imgstr[i] = color;
+}
+
+unsigned long	choose_fractal(t_env *e, double a, double b)
+{
+	if (e->fract == 0)
+		return (mandelbrot(e, a, b));
+	if (e->fract == 1)
+		return (julia(e, a, b));
+	if (e->fract == 2)
+		return (n_julia(e, a, b));
+	if (e->fract == 4)
+		return (burning_ship(e, a, b));
+	if (e->fract == 5)
+		return (tricorn(e, a, b));
+	else
+		return (-1);
 }
 
 void			fract_plot(t_env *e)
@@ -39,14 +55,7 @@ void			fract_plot(t_env *e)
 		b = -1;
 		while (++b < WINH)
 		{
-			if (e->fract == 0)
-				i = mandelbrot(e, (double)a, (double)b);
-			if (e->fract == 1)
-				i = julia(e, (double)a, (double)b);
-			if (e->fract == 2)
-				i = n_julia(e, (double)a, (double)b);
-			if (e->fract == 4)
-				i = tricorn(e, (double)a, (double)b);
+			i = choose_fractal(e, (double)a, (double)b);
 			draw_point(e, a, b, i_color(e, i));
 		}
 	}

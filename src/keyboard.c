@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 22:47:57 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 12:05:20 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	key_zoom(int key, t_env *e)
 int		deal_key(int key, t_env *e)
 {
 	key_fractals(key, e);
+	key_fractals2(key, e);
 	key_colors(key, e);
 	key_iter(key, e);
 	key_zoom(key, e);

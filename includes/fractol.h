@@ -6,14 +6,13 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 23:36:26 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 12:05:27 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include <unistd.h>
-# include <stdio.h>
 # include <math.h>
 # include <time.h>
 # include <stdlib.h>
@@ -38,6 +37,7 @@ typedef struct			s_env
 	int					s_l;
 	int					endian;
 	int					fract;
+	char				*fract_name[6];
 	int					a;
 	int					b;
 	int					c;
@@ -82,7 +82,6 @@ t_brnsl					*init_brnsl(void);
 t_env					*init_env(char **av);
 int						init_fract(char **av);
 
-
 /*
 ** COLORS INITIALIZATION
 */
@@ -106,7 +105,7 @@ unsigned long			i_color(t_env *e, int i);
 
 void					disp_color(t_env *e, int x, int y);
 void					display_infos(t_env *e);
-void					display_infos2(t_env *e);
+void					display_status(t_env *e);
 
 /*
 ** FRACTALES
@@ -115,9 +114,11 @@ void					display_infos2(t_env *e);
 unsigned int			mandelbrot(t_env *e, double x0, double y0);
 unsigned int			julia(t_env *e, double x0, double y0);
 unsigned int			n_julia(t_env *e, double x0, double y0);
+unsigned int			burning_ship(t_env *e, double x0, double y0);
 unsigned int			tricorn(t_env *e, double x0, double y0);
 void					barnsley(t_env *e, unsigned long iter);
 void					barnsley_algo(t_env *e, int rd);
+unsigned long			choose_fractal(t_env *e, double a, double b);
 
 /*
 ** IMAGES / DRAWING
@@ -133,6 +134,7 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 
 int						deal_key(int key, t_env *e);
 void					key_fractals(int key, t_env *e);
+void					key_fractals2(int key, t_env *e);
 void					key_colors(int key, t_env *e);
 void					key_iter(int key, t_env *e);
 void					key_move(int key, t_env *e);

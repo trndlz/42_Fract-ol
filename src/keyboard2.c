@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:08:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/06 21:14:25 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/07 11:48:45 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,17 @@ void	key_iter(int key, t_env *e)
 
 void	key_fractals(int key, t_env *e)
 {
-	if (key == 83)
+	if (key == 86)
 	{
-		e->fract = 0;
+		e->fract = 4;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 87)
+	{
+		e->fract = 5;
 		e->mndl = init_mandel(e);
 	}
 	if (key == 84)
-	{
-		e->fract = 1;
-		e->mndl = init_mandel(e);
-	}
-	if (key == 86)
-	{
-		e->fract = 3;
-		e->brnsl = init_brnsl();
-	}
-	if (key == 85)
 	{
 		e->fract = 2;
 		e->mndl = init_mandel(e);
@@ -80,5 +75,24 @@ void	key_fractals(int key, t_env *e)
 	{
 		e->brnsl = init_brnsl();
 		e->mndl = init_mandel(e);
+	}
+}
+
+void	key_fractals2(int key, t_env *e)
+{
+	if (key == 82)
+	{
+		e->fract = 0;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 83)
+	{
+		e->fract = 1;
+		e->mndl = init_mandel(e);
+	}
+	if (key == 85)
+	{
+		e->fract = 3;
+		e->brnsl = init_brnsl();
 	}
 }

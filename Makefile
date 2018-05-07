@@ -6,25 +6,28 @@
 #    By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/06 22:07:32 by tmervin           #+#    #+#              #
-#    Updated: 2018/05/06 23:39:07 by tmervin          ###   ########.fr        #
+#    Updated: 2018/05/07 12:07:12 by tmervin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= fractol
 
-SRC_PATH	:= ./src
+SRC_PATH	:= src
 SRC_NAME	:=	main.c			\
 				keyboard.c		\
 				keyboard2.c		\
 				color.c			\
 				fractales.c		\
+				fractales2.c	\
 				display.c		\
 				init_colors.c	\
 				images.c		\
 				usage.c			\
 				init.c
 
-OBJ_PATH	:= ./src
+OBJ_PATH	:= obj
+HEAD_PATH	:= ./includes
+
 CPPFLAGS	:= -Iincludes -I./libft/includes
 
 LDFLAGS		:= -Llibft/
@@ -33,8 +36,9 @@ MINILIBX	:= -L ./minilibx_macos/ -lmlx -framework OpenGL -framework Appkit
 
 CC			:= gcc -Werror -Wall -Wextra
 OBJ_NAME	:= $(SRC_NAME:.c=.o)
-SRC			:= $(addprefix $(SRC_PATH)/,$(SRC_NAME))
-OBJ			:= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+SRC			:= $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+OBJ			:= $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
 .PHONY: all, clean, fclean, re
 
@@ -45,9 +49,13 @@ $(NAME): $(OBJ)
 	make -C minilibx_macos/
 	$(CC) $(LDFLAGS) $(LDLIBS) $(MINILIBX) $^ -o $@
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	@mkdir $(OBJ_PATH) 2> /dev/null
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) $(CPPFLAGS) -o $@ -c $<
+
+norm:
+	norminette $(HEAD_PATH)
+	norminette $(SRC)
 
 clean:
 	make clean -C libft/
@@ -61,3 +69,6 @@ fclean: clean
 	rm -fv $(NAME)
 
 re: fclean all
+
+$(OBJ_PATH):
+	@mkdir -p $(OBJ_PATH)
