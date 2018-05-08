@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 12:05:20 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/08 17:05:04 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 {
 	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
 	{
-		if (k == 1)
-		{
-			e->mndl = init_mandel(e);
-			e->mndl->j_cx = (3.5 * x / WINW) - 2.5;
-			e->mndl->j_cy = (2 * x / WINH) - 1;
-		}
 		if (k == 5)
 		{
 			e->mndl->x_len *= 0.90;
@@ -36,6 +30,18 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 			e->brnsl->x_zoom *= 0.9;
 			e->brnsl->y_zoom *= 0.9;
 		}
+	}
+	create_image(e);
+	return (0);
+}
+
+int		mouse_move(int x, int y, t_env *e)
+{
+	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
+	{
+		e->mndl = init_mandel(e);
+		e->mndl->j_cx = (3.5 * x / WINW) - 2.5;
+		e->mndl->j_cy = (2 * x / WINH) - 1;
 	}
 	create_image(e);
 	return (0);

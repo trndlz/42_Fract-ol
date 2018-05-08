@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 13:12:05 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/08 17:04:31 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void					key_move_zoom(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_key(int key, t_env *e);
 int						deal_mouse(int k, int x, int y, t_env *e);
+int						mouse_move(int x, int y, t_env *e);
 
 /*
 ** ERRORS
