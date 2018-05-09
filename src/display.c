@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:24:56 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 11:43:09 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 19:51:39 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	display_status(t_env *e)
 		e->fract_name[e->fract]);
 	mlx_string_put(e->mlx, e->win, WINW + 10, 65, 0xC8C8C8,
 			"> MAX ITER. (+ -)");
-	mlx_string_put(e->mlx, e->win, WINW + 10, 85, 0xFFFFFF, it);
+	mlx_string_put(e->mlx, e->win, WINW + 10, 85, 0xFFFFFF, (it ? it : "\0"));
 	mlx_string_put(e->mlx, e->win, WINW + 10, 125, 0xC8C8C8,
 		"> COLOR (6 to 9)");
 	disp_color(e, WINW + 10, 145);
@@ -72,7 +72,8 @@ void	display_infos(t_env *e)
 	{
 		mlx_string_put(e->mlx, e->win, WINW + 10, 465, 0xC8C8C8,
 			"> N (-n +m):");
-		mlx_string_put(e->mlx, e->win, WINW + 135, 465, 0xFFFFFF, n);
+		mlx_string_put(e->mlx, e->win, WINW + 135, 465, 0xFFFFFF,
+				(n ? n : "\0"));
 	}
 	free(n);
 	display_status(e);

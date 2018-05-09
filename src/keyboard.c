@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/08 17:05:04 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 20:03:12 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,14 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 	return (0);
 }
 
+/*
+** Mouse Move : Change Julia and N-Julia parameters (only)
+*/
+
 int		mouse_move(int x, int y, t_env *e)
 {
-	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
+	if ((e->fract == 1 || e->fract == 3) 
+			&& x >= 0 && y >= 0 && x <= WINW && y <= WINH)
 	{
 		e->mndl = init_mandel(e);
 		e->mndl->j_cx = (3.5 * x / WINW) - 2.5;

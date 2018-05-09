@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:08:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/07 13:28:44 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/09 20:00:50 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,26 @@ void	key_colors(int key, t_env *e)
 	if (key == 88)
 	{
 		free(e->color);
-		e->color = init_color();
+		if (!(e->color = init_color()))
+			ft_malloc_error(e);
 	}
 	if (key == 89)
 	{
 		free(e->color);
-		e->color = init_color2();
+		if (!(e->color = init_color2()))
+			ft_malloc_error(e);
 	}
 	if (key == 91)
 	{
 		free(e->color);
-		e->color = init_color3();
+		if (!(e->color = init_color3()))
+			ft_malloc_error(e);
 	}
 	if (key == 92)
 	{
 		free(e->color);
-		e->color = init_color4();
+		if (!(e->color = init_color4()))
+			ft_malloc_error(e);
 	}
 }
 
