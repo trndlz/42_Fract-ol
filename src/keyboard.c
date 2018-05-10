@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/09 20:03:12 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/10 15:09:58 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 
 int		mouse_move(int x, int y, t_env *e)
 {
-	if ((e->fract == 1 || e->fract == 3) 
-			&& x >= 0 && y >= 0 && x <= WINW && y <= WINH)
+	int tmp;
+
+	if ((e->fract == 1 || e->fract == 2)
+			&& x >= 0 && y >= 0 && e->zoomed == 0 && x <= WINW && y <= WINH)
 	{
+		tmp = e->mndl->n;
 		e->mndl = init_mandel(e);
+		e->mndl->n = tmp;
 		e->mndl->j_cx = (3.5 * x / WINW) - 2.5;
 		e->mndl->j_cy = (2 * x / WINH) - 1;
 	}
@@ -80,6 +84,7 @@ void	key_zoom(int key, t_env *e)
 {
 	if (key == 49)
 	{
+		e->zoomed = 1;
 		e->mndl->x_len *= 0.90;
 		e->mndl->y_len *= 0.90;
 		e->brnsl->x_zoom *= 1.1;
@@ -87,6 +92,7 @@ void	key_zoom(int key, t_env *e)
 	}
 	if (key == 51)
 	{
+		e->zoomed = 1;
 		e->mndl->x_len *= 1.1;
 		e->mndl->y_len *= 1.1;
 		e->brnsl->x_zoom *= 0.9;

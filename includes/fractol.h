@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/08 17:04:31 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/10 15:03:26 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct			s_env
 	struct s_mandel		*mndl;
 	struct s_brnsl		*brnsl;
 	struct s_color		*color;
+	int					zoomed;
 }						t_env;
 
 typedef struct			s_mandel
