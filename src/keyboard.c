@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/10 15:09:58 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/10 18:52:54 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int		deal_mouse(int k, int x, int y, t_env *e)
 {
 	if (x >= 0 && y >= 0 && x <= WINW && y <= WINH)
 	{
+		if (k == 1)
+		{
+			e->mndl->x_cen += e->mndl->x_len * (float)(x - WINW / 2) / WINW;
+			e->mndl->y_cen += e->mndl->y_len * (float)(y - WINH / 2) / WINH;
+		}
 		if (k == 5)
 		{
 			e->mndl->x_len *= 0.90;

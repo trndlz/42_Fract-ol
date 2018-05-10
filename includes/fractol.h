@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/10 15:03:26 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/10 16:00:03 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <time.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include "mlx.h"
 # include "libft.h"
