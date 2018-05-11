@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:08:14 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/10 18:52:54 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/11 12:58:15 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int		mouse_move(int x, int y, t_env *e)
 			&& x >= 0 && y >= 0 && e->zoomed == 0 && x <= WINW && y <= WINH)
 	{
 		tmp = e->mndl->n;
-		e->mndl = init_mandel(e);
+		free(e->mndl);
+		if (!(e->mndl = init_mandel(e)))
+			ft_malloc_error(e);
 		e->mndl->n = tmp;
 		e->mndl->j_cx = (3.5 * x / WINW) - 2.5;
 		e->mndl->j_cy = (2 * x / WINH) - 1;
@@ -109,6 +111,7 @@ int		deal_key(int key, t_env *e)
 {
 	key_fractals(key, e);
 	key_fractals2(key, e);
+	key_fractals3(key, e);
 	key_colors(key, e);
 	key_iter(key, e);
 	key_zoom(key, e);

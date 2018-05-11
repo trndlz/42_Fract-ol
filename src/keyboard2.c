@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 21:08:31 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/10 15:20:46 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/11 12:57:02 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,21 @@ void	key_fractals(int key, t_env *e)
 	if (key == 86)
 	{
 		e->fract = 4;
+		free(e->mndl);
 		if (!(e->mndl = init_mandel(e)))
 			ft_malloc_error(e);
 	}
 	if (key == 87)
 	{
 		e->fract = 5;
+		free(e->mndl);
 		if (!(e->mndl = init_mandel(e)))
 			ft_malloc_error(e);
 	}
 	if (key == 84)
 	{
 		e->fract = 2;
-		if (!(e->mndl = init_mandel(e)))
-			ft_malloc_error(e);
-	}
-	if (key == 36)
-	{
-		if (!(e->brnsl = init_brnsl()))
-			ft_malloc_error(e);
+		free(e->mndl);
 		if (!(e->mndl = init_mandel(e)))
 			ft_malloc_error(e);
 	}
@@ -92,21 +88,37 @@ void	key_fractals(int key, t_env *e)
 
 void	key_fractals2(int key, t_env *e)
 {
+	if (key == 36)
+	{
+		free(e->mndl);
+		free(e->brnsl);
+		if (!(e->brnsl = init_brnsl()))
+			ft_malloc_error(e);
+		if (!(e->mndl = init_mandel(e)))
+			ft_malloc_error(e);
+	}
+}
+
+void	key_fractals3(int key, t_env *e)
+{
 	if (key == 82)
 	{
 		e->fract = 0;
+		free(e->mndl);
 		if (!(e->mndl = init_mandel(e)))
 			ft_malloc_error(e);
 	}
 	if (key == 83)
 	{
 		e->fract = 1;
+		free(e->mndl);
 		if (!(e->mndl = init_mandel(e)))
 			ft_malloc_error(e);
 	}
 	if (key == 85)
 	{
 		e->fract = 3;
+		free(e->brnsl);
 		if (!(e->brnsl = init_brnsl()))
 			ft_malloc_error(e);
 	}

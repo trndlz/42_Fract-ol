@@ -6,7 +6,7 @@
 /*   By: tmervin <tmervin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/06 22:09:41 by tmervin           #+#    #+#             */
-/*   Updated: 2018/05/10 16:00:03 by tmervin          ###   ########.fr       */
+/*   Updated: 2018/05/11 12:58:04 by tmervin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include <math.h>
 # include <time.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "mlx.h"
 # include "libft.h"
@@ -137,6 +136,7 @@ void					draw_point(t_env *e, int x, int y, unsigned int color);
 int						deal_key(int key, t_env *e);
 void					key_fractals(int key, t_env *e);
 void					key_fractals2(int key, t_env *e);
+void					key_fractals3(int key, t_env *e);
 void					key_colors(int key, t_env *e);
 void					key_iter(int key, t_env *e);
 void					key_move(int key, t_env *e);
